@@ -40,18 +40,19 @@
                 <section data-markdown>
                     <script type="text/template">
                         ### History with Hoot
-                        * Initially just built the code
+                        * Initially Jenkins just built the code
                         * Triggered by commit hook on internal gitolite
                         * Eventually ran tests
                         * Occurred nightly via cron job
-                        * Emailed team on broken build and with nightly test output log
+                        * Notified team on broken build commits
+                        * And with nightly test log output
                     </script>
                 </section>
                 <section data-markdown>
                     <script type="text/template">
                         ### Open Source on GitHub
                         * Began using gitflow branch mgmt
-                        * Tried out code review via pull requests
+                        * Tried out peer code review via pull requests
                         [<img src="img/pr-diff.png">]()
                         * Time to resurrect Jenkins CI!
                     </script>
@@ -59,7 +60,7 @@
                 <section data-markdown>
                     <script type="text/template">
                         ### Jenkins Plugins to the Rescue
-                        * GitHub Pull Request Builder - builds pull requests and reports results
+                        * GitHub Pull Request Builder - builds pull requests and reports results back to GitHub
                         [<img src="img/pr-success.png">]()
                         * Now developers and code reviewers know the changes in the PR
                         	pass all the tests without running locally themselves
@@ -69,7 +70,8 @@
                     <script type="text/template">
                         ### Jenkins Project Config Example
                         * Hoot UI pull requests
-                        * Build Step - makes sure eslint and mocha tests pass
+                        * Build Step - makes sure eslint checks and mocha tests pass
+
                         [<img src="img/jenkins-config.png">]()
                     </script>
                 </section>
@@ -87,7 +89,7 @@
                         * Allows tests to run in isolated environment
                         	that is consistent and reproducable
                         * A full running Hoot stack can be generated for each job
-                        * VMs can be recycled for jobs throughout the day
+                        * VMs can be recycled for jobs throughout the day (saves provisioning time)
                         * Then destroyed to start with a fresh environment each morning
                     </script>
                 </section>
@@ -102,10 +104,10 @@
                 <section data-markdown>
                     <script type="text/template">
                         ### Recent Changes
-                        * Widening the pipeline
-                        * Running multiple instances of the same Jenkins job concurrently
+                        * Widening the pipeline - running multiple instances of the same Jenkins job concurrently
+                        * Prevents delay caused by PR jobs queuing up
                         * UI Test pull request job now enabled
-                        * Impact on disk/cpu/ram resources needs to be observed
+                        * Impact on disk/cpu/ram resources needs to be observed and may require tighter mgmt
                     </script>
                 </section>
                 <section data-markdown>
@@ -122,8 +124,15 @@
                         * Keeping the dashboard blue requires much care & feeding
                         * Tests can be brittle (see Cucumber)
                         * False positives can outweigh true failures
-                        * But at some point, jobs will stabilize and we will realize Continuous Integration Nirvana
                     </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ### Conclusion
+                        * Continuous Integration requires an investment
+                        * It's also not "maintenance-free"
+                        * But at some point, Jenkins jobs will stabilize and we will savor the CI Goodness that we've made
+                   </script>
                 </section>
             </div>
         </div>
