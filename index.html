@@ -39,57 +39,90 @@
                 </section>
                 <section data-markdown>
                     <script type="text/template">
-                        ### History
+                        ### History with Hoot
                         * Initially just built the code
-                        * Triggered by commit
+                        * Triggered by commit hook on internal gitolite
                         * Eventually ran tests
                         * Occurred nightly via cron job
-                        * Emailed team on broken build/tests
+                        * Emailed team on broken build and with nightly test output log
                     </script>
                 </section>
                 <section data-markdown>
                     <script type="text/template">
-                        ### Jenkins Plugins
+                        ### Open Source on GitHub
+                        * Began using gitflow branch mgmt
+                        * Tried out code review via pull requests
+                        [<img src="img/pr-diff.png">]()
+                        * Time to resurrect Jenkins CI!
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ### Jenkins Plugins to the Rescue
                         * GitHub Pull Request Builder - builds pull requests and reports results
-                        [<img src="img/pr-success.png">](foo)
+                        [<img src="img/pr-success.png">]()
+                        * Now developers and code reviewers know the changes in the PR
+                        	pass all the tests without running locally themselves
                     </script>
                 </section>
                 <section data-markdown>
                     <script type="text/template">
-                        ### Jenkins Project Config for Hoot UI PRs
+                        ### Jenkins Project Config Example
+                        * Hoot UI pull requests
                         * Build Step - makes sure eslint and mocha tests pass
-                        [<img src="img/jenkins-config.png">](foo)
+                        [<img src="img/jenkins-config.png">]()
                     </script>
                 </section>
                 <section data-markdown>
                     <script type="text/template">
-                        ### Hoot Pull Requests
-                        * Runs multiple Jenkins jobs
-                        [<img src="img/pr-pending.png">](foo)
-                        * This one uses a Vagrant VM to build the code and run tests
+                        ### Hoot Pull Requests Example
+                        * Runs multiple Jenkins jobs testing different code tiers and on different platforms
+                        [<img src="img/pr-pending.png">]()
+                        * Most jobs now use a Vagrant VM to build the code and run tests
                     </script>
                 </section>
                 <section data-markdown>
                     <script type="text/template">
                         ### Vagrant
                         * Allows tests to run in isolated environment
-                        * that is consistent and reproducable
+                        	that is consistent and reproducable
+                        * A full running Hoot stack can be generated for each job
+                        * VMs can be recycled for jobs throughout the day
+                        * Then destroyed to start with a fresh environment each morning
                     </script>
                 </section>
                 <section data-markdown>
                     <script type="text/template">
-                        ### Jenkins Plugins
+                        ### More Jenkins Plugins
                         * Mailer Plugin - email notification for build results
-                        [<img src="img/ui-email.png">](foo)
+                        [<img src="img/ui-email.png" width="500">]()
                         * Very useful for preserving and disseminating test output that is deleted by subsequent runs of the Jenkins job.
                     </script>
                 </section>
                 <section data-markdown>
                     <script type="text/template">
-                        ### Challenges
+                        ### Recent Changes
                         * Widening the pipeline
-                        * Running multiple instances of the same Jenkins job in parallel
-                        *
+                        * Running multiple instances of the same Jenkins job concurrently
+                        * UI Test pull request job now enabled
+                        * Impact on disk/cpu/ram resources needs to be observed
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ### I Love This !
+                        * Developers can make code changes in a reviewable fashion and regression testing can be performed automatically before merging
+                        [<img src="img/pr-fail.png">]()
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ### I Hate This : (
+                        [<img src="img/jenkins-dash.png">]()
+                        * Keeping the dashboard blue requires much care & feeding
+                        * Tests can be brittle (see Cucumber)
+                        * False positives can outweigh true failures
+                        * But at some point, jobs will stabilize and we will realize Continuous Integration Nirvana
                     </script>
                 </section>
             </div>
